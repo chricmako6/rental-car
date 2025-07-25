@@ -2,13 +2,15 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Eye } from "lucide-react";
-import { Star } from "lucide-react";
+import { Eye, Heart, Star  } from "lucide-react";
 import Popup from "./PopUp";
 
 const cardData = [
     {
     image: "/assets/ca5.jpg", 
+    power: "100 HP",
+    acceleration: "0-100 in 4.1s",
+    speed: "20 km/h",
     rating: 4.8,
     price: "$9430",
     discount: "10%",
@@ -19,6 +21,9 @@ const cardData = [
 },
 {
     image: "/assets/car2.jpg", 
+    power: "80 HP",
+    acceleration: "0-100 in 5s",
+    speed: "22 km/h",
     rating: 4.2,
     price: "$2430",
     discount: "10%",
@@ -29,6 +34,9 @@ const cardData = [
 },
 {
     image: "/assets/car3.jpg", 
+    power: "92 HP",
+    acceleration: "0-100 in 9s",
+    speed: "28 km/h",
     rating: 4.6,
     price: "$8830",
     discount: "10%",
@@ -39,6 +47,9 @@ const cardData = [
 },
 {
     image: "/assets/car1.jpg", 
+    power: "76 HP",
+    acceleration: "0-100 in 3.3s",
+    speed: "20 km/h",
     rating: 4.9,
     price: "$1000",
     discount: "10%",
@@ -49,6 +60,9 @@ const cardData = [
 },
 {
     image: "/assets/car6.jpg", 
+    power: "200 HP",
+    acceleration: "0-100 in 1.5s",
+    speed: "230 km/h",
     rating: 4.3,
     price: "$1200",
     discount: "10%",
@@ -59,6 +73,9 @@ const cardData = [
 },
 {
     image: "/assets/NO4.jpg", 
+    power: "50 HP",
+    acceleration: "0-100 in 6.5s",
+    speed: "190 km/h",
     rating: 4.1,
     price: "$4300",
     discount: "10%",
@@ -80,6 +97,7 @@ const getAnimationProps = (index) => {
 };
 
 const ServiceCard = () => {
+    const [liked, setLiked] = useState(false); // State to track if the card is liked
     const [showModal, setShowModal] = useState(false); // Modal visibility state
     const [selectedCard, setSelectedCard] = useState(null); // To track the selected card for modal
 
@@ -165,19 +183,66 @@ const ServiceCard = () => {
                             <div className="">
                                 {selectedCard && (
                                   <>
-                                    <p>
-                                        <img src={selectedCard.image} alt="" w-50 h-50 className="rounded-md"/>
-                                    </p>
-                                    <p><strong>Description:</strong> {selectedCard.reviewText}</p>
+                                    <div className="relative block">
+                                        <img
+                                            src={selectedCard.image}
+                                            alt=""
+                                            className="w-full object-cover h-50 rounded-md cursor-pointer transition-transform duration-300 hover:scale-105"
+                                        />
+                                        <p>
+                                            <span className="text-black inline bg-primary-foreground rounded-full px-3 py-1 top-2 left-2 absolute">
+                                             {selectedCard.availability}
+                                            </span>
+                                        </p>
+                                        <button
+                                            onClick={() => setLiked(!liked)}
+                                            className="absolute top-2 right-2"
+                                            >
+                                            <Heart
+                                                className={`w-6 h-6 transition-all duration-300 ${
+                                                liked ? "text-red-600 fill-red-600" : "text-primary-foreground"
+                                                }`}
+                                            />
+                                        </button>
+                                    </div>
+                                    <div className="mt-2 border-2 p-4 justify-center rounded-lg shadow-md flex divide-x divide-gray-300">
+                                        {/* Power */}
+                                        <div className="pr-4 px-2">
+                                            <p className="font-normal text-sm">
+                                            Power<br />
+                                            <span className="font-bold text-lg">{selectedCard.power}</span>
+                                            </p>
+                                        </div>
+
+                                        {/* Acceleration */}
+                                        <div className="px-5">
+                                            <p className="font-normal text-sm">
+                                            Acceleration<br />
+                                            <span className="font-bold text-lg">{selectedCard.acceleration}</span>
+                                            </p>
+                                        </div>
+
+                                        {/* Speed */}
+                                        <div className="pl-4 px-2">
+                                            <p className="font-normal text-sm">
+                                            Speed<br />
+                                            <span className="font-bold text-lg">{selectedCard.speed}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
                                   </>
                                 )}
                             </div>
+
                             <div className="">
-                                <Popup />
+                                <Popup price={selectedCard?.price} discount={selectedCard?.discount} rating={selectedCard?.rating} />
                             </div>
                         </div>
-                        <div className="mt-4 flex justify-end">
-                            <button onClick={handleModalClose} className="bg-red-500 text-white py-2 px-4 rounded-lg">Close</button>
+                        <div className="mt-4 gap-2.5 flex justify-end">
+                            <button onClick={handleModalClose} className="bg-red-500 text-white py-2 px-4 rounded-lg cursor-pointer">
+                                Close
+                            </button>
                         </div>
                     </div>
                 </div>
