@@ -1,5 +1,6 @@
 "use client" 
 import React from "react";
+import Link from "next/link";
 import { Search, ArrowUpRight } from 'lucide-react';
 import { Input } from "@/components/ui/input"; // shadcn/ui Input
 import { Label } from "@/components/ui/label"; // shadcn/ui Label
@@ -49,13 +50,13 @@ export default function HeroGlass() {
                 </button>
             </div>
             {/* Navigation */}
-            <div className="flex flex-col items-center mt-6">
-                <div className="flex items-center gap-2">
-                    <p className="text-primary-foreground font-semibold ">
-                        Not sure? <span className="text-primary font-semibold">Explore our top tour vehicles</span>
+           <div className="flex flex-col items-center mt-6">
+                <Link href="/morevehicles" className="flex items-center gap-2 cursor-pointer hover:text-gray-50 transition">
+                    <p className="text-primary-foreground font-semibold">
+                    Not sure? <span className="text-primary font-semibold">Explore our top tour vehicles</span>
                     </p>
                     <ArrowUpRight className="text-primary w-5 h-5" />
-                </div>
+                </Link>
             </div>
         </div>
     );

@@ -8,7 +8,7 @@ const Navbar = () => {
     const effect2 = "rounded-full bg-gray-900 text-white transition px-3 py-2";
     return (
 
-        <nav className="w-full mb-20 flex items-center justify-between px-10 py-2">
+        <nav className="w-full mb-20 flex items-center justify-between px-10 py-2 sticky top-0">
             {/* Logo (left) */}
             <div className="flex items-center gap-2">
                 <span className="font-bold text-xl text-primary-foreground">RentalCar</span>
