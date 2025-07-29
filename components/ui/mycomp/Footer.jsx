@@ -20,7 +20,7 @@ const Footer = () => {
             style={footerStyle} // Apply the inline style here
         > 
             {/* right animation */}
-            <div className="gradient-shadow hidden  md:flex flex-col p-3"> 
+            <div className="gradient-shadow hidden  md:flex flex-col p-10"> 
                 <div>
                     <h2 className="text-3xl font-bold text-white mb-4">renTAl-CaR</h2>
                 </div>
@@ -34,7 +34,7 @@ const Footer = () => {
             </div>
 
             {/* left animation */}
-            <div className="grid grid-cols-2 gap-2 p-4 gradient-shadow-left">
+            <div className="grid grid-cols-2 gap-2 p-10 gradient-shadow-left">
                 <div className="text-white">
                     <h2 className="font-semibold mb-2">QUICK LINKS</h2>
                     <ul className="space-y-1 font-bold">

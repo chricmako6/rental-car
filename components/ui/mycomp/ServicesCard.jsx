@@ -111,7 +111,7 @@ const ServiceCard = () => {
     };
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5 relative">
             {cardData.map((card, index) => {
                 const animation = getAnimationProps(index);
                 return (
@@ -142,8 +142,8 @@ const ServiceCard = () => {
 
                         {/* Description */}
                         <div className="absolute w-full bottom-0 left-0 p-4 text-white space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <p className="text-black inline bg-primary-foreground rounded-full px-3 py-1">{card.availability}</p>
-                            <p className="text-white font-bold py-1">{card.reviewText}</p>
+                            <p className="text-black inline bg-primary-foreground rounded-full px-3 py-1 mb-5">{card.availability}</p>
+                            <p className="text-white font-bold py-1 mt-2">{card.reviewText}</p>
                             <p className="text-sm flex items-center">
                                 <span className="font-bold mr-2">Rating:</span> {card.rating}
                                 <span className="text-gray-300 flex items-center gap-1 ml-2">

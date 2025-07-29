@@ -6,9 +6,10 @@ import { LogIn } from 'lucide-react';
 const Navbar = () => {
     const effect1 = "rounded-full hover:bg-primary/80 hover:text-white transition px-3 py-2";
     const effect2 = "rounded-full bg-gray-900 text-white transition px-3 py-2";
+    const addCart = "hidden md:inline absolute top-1/3 right-2/3 bg-red-500 text-sm text-primary-foreground rounded-full w-5 h-5 justify-center items-center"
     return (
 
-        <nav className="w-full mb-20 flex items-center justify-between px-10 py-2 sticky top-0">
+        <nav className="w-full mb-20 flex items-center justify-between px-10 py-2">
             {/* Logo (left) */}
             <div className="flex items-center gap-2">
                 <span className="font-bold text-xl text-primary-foreground">RentalCar</span>
@@ -20,13 +21,14 @@ const Navbar = () => {
                 <Link href="/preferences" className={effect1}>Preferences</Link>
             </div>
             {/* Right side: Icons + Login */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 relative">
                 <button className="flex items-center gap-1 text-primary-foreground hover:text-primary transition">
-                    <ShoppingCart size={22} />
-                    <span className="hidden md:inline">Cart</span>
+                    <ShoppingCart size={25} />
+                    <span 
+                    className={addCart}>0</span>
                 </button>
                 <a href="/login" className="flex items-center gap-1 text-primary-foreground hover:text-primary font-medium transition">
-                    <LogIn size={22} />
+                    <LogIn size={25} />
                     <span>Login</span>
                 </a>
             </div>
