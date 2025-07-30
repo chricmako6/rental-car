@@ -2,9 +2,11 @@
 import React from 'react';
 import { useState, useMemo } from "react";
 import { Star, ShoppingCart, CreditCard, Minus, Plus } from 'lucide-react';
+import { useCart } from "../../../hooks/CartProvider";
 
 const Popup = ({ price, discount, rating }) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   const increment = () => setQuantity((prev) => prev + 1);
   const decrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1)); 
@@ -62,7 +64,10 @@ const total = useMemo(() => {
           className="bg-gray-300 px-2 py-1 rounded hover:bg-gray-400 transition cursor-pointer">
           <Plus size={16} />
         </button>
-        <button className="cursor-pointer flex items-center gap-1.5 bg-primary text-white px-3 py-1 rounded-md hover:bg-primary/80 transition">
+        <button
+          onClick={() => addToCart(quantity)}
+          className="cursor-pointer flex items-center gap-1.5 bg-primary text-white px-3 py-1 rounded-md hover:bg-primary/80 transition"
+        >
           <ShoppingCart size={16} />
           Add to Cart
         </button>

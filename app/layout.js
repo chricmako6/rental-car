@@ -1,6 +1,7 @@
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/ui/mycomp/Footer";
+import { CartProvider } from "../hooks/CartProvider";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -23,7 +24,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${robotoSans.variable} ${robotoMono.variable} antialiased`}>
-        {children}
+         <CartProvider>
+          {children}
+         </CartProvider>
         <Footer />
       </body>
     </html>

@@ -10,7 +10,7 @@ import {
   PaginationItem,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"; // 🆕 Import from shadcn
+} from "@/components/ui/pagination"; // 
 
 const cardData = [
     {
@@ -240,7 +240,7 @@ const morevehicles = () => {
       <div className="shadow-bottom">
         <Navbar />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 relative">
-          {/* 🆕 Use paginatedData */}
+          {/* Use paginatedData */}
           {paginatedData.map((card, index) => {
             const animation = getAnimationProps(index);
             return (
@@ -366,23 +366,23 @@ const morevehicles = () => {
           )}
         </div>
 
-        {/* 🆕 Pagination at the bottom */}
+        {/* Pagination at the bottom */}
         <div className="flex justify-center mt-6">
           <Pagination>
             <PaginationContent>
-              <PaginationItem>
+              <PaginationItem className="cursor-pointer">
                 <PaginationPrevious
                   onClick={handlePrev}
-                  className={page === 1 ? "pointer-events-none opacity-50" : ""}
+                  className={page === 1 ? "cursor-pointer opacity-50" : ""}
                 />
               </PaginationItem>
               <PaginationItem>
                 <span className="px-4 py-2 text-sm">Page {page} of {pageCount}</span>
               </PaginationItem>
-              <PaginationItem>
+              <PaginationItem className="cursor-pointer">
                 <PaginationNext
                   onClick={handleNext}
-                  className={page === pageCount ? "pointer-events-none opacity-50" : ""}
+                  className={page === pageCount ? " opacity-50 cursor-pointer" : ""}
                 />
               </PaginationItem>
             </PaginationContent>
